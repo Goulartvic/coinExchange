@@ -3,6 +3,8 @@ package controller;
 import model.Coin;
 import model.User;
 
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +29,9 @@ public class CoinRegister {
 
     public void depositReal(User user, double value) {
         user.getWallet().replace("Real", value);
+        Instant timeNow = Instant.now();
+        String history = user.getName() + "-" + value + "-" + timeNow.toString();
+        user.getDepositHistory().add(history);
     }
 
     public void withdrawReal(User user, double value) {
@@ -62,5 +67,8 @@ public class CoinRegister {
         System.out.println(user.getWallet());
         coinRegister.withdrawReal(user,80);
         System.out.println(user.getWallet());
+        coinRegister.depositReal(user, 300);
+        System.out.println(user.getDepositHistory());
+
     }
 }

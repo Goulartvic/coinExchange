@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 import java.util.Map;
 
 public class User {
@@ -9,6 +10,8 @@ public class User {
     private String password;
 
     private Map<String, Double> wallet;
+
+    private List<String> depositHistory;
 
     public User(String name, String password, Map<String, Double> wallet) {
         this.name = name;
@@ -38,5 +41,13 @@ public class User {
 
     public void setWallet(Map<String, Double> wallet) {
         this.wallet = wallet;
+    }
+
+    public List<String> getDepositHistory() {
+        return depositHistory;
+    }
+
+    public void setDepositHistory(List<String> depositHistory) {
+        this.depositHistory = depositHistory;
     }
 }
